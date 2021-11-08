@@ -12,13 +12,13 @@ import static org.junit.Assert.*;
 
 public class VarastoTest {
 
-    //Varasto varasto;
+    Varasto varasto;
     double vertailuTarkkuus = 0.0001;
 
-    // @Before
-    // public void setUp() {
-    //     varasto = new Varasto(10);
-    // }
+    @Before
+    public void setUp() {
+        varasto = new Varasto(10);
+    }
 
     @Test
     public void konstruktoriLuoTyhjanVaraston() {
