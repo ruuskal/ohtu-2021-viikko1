@@ -12,13 +12,13 @@ import static org.junit.Assert.*;
 
 public class VarastoTest {
 
-    Varasto varasto;
+    //Varasto varasto;
     double vertailuTarkkuus = 0.0001;
 
-    @Before
-    public void setUp() {
-        varasto = new Varasto(10);
-    }
+    // @Before
+    // public void setUp() {
+    //     varasto = new Varasto(10);
+    // }
 
     @Test
     public void konstruktoriLuoTyhjanVaraston() {
@@ -64,5 +64,43 @@ public class VarastoTest {
         // varastossa pitäisi olla tilaa 10 - 8 + 2 eli 4
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
+
+    @Test
+    public void laitetaanLiikaaTavaraa() {
+        varasto.lisaaVarastoon(11);
+
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test 
+    public void otetaanEnemmänKuinOn() {
+        varasto.lisaaVarastoon(5);
+        varasto.otaVarastosta(10);
+
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void eiVoiOttaaNegatiivistaMaaraa() {
+        varasto.lisaaVarastoon(5);
+        varasto.otaVarastosta(-1);
+
+        assertEquals(5, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test 
+    public void eiVoiLuodaVarastolleTilavuuttaIsompaaSaldoa() {
+        Varasto uusiVarasto = new Varasto(10, 20);
+
+        assertEquals(10, uusiVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test 
+    public void luodaanNormaaliTilavuusJaSaldo() {
+        Varasto uusiVarasto = new Varasto(10, 5);
+
+        assertEquals(5, uusiVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
 
 }
