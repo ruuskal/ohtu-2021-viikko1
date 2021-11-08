@@ -102,5 +102,11 @@ public class VarastoTest {
         assertEquals(5, uusiVarasto.getSaldo(), vertailuTarkkuus);
     }
 
+    @Test 
+    public void merkkijonoesitysOnOikea() {
+        
+        assertEquals("saldo = 0.0, vielä tilaa 10.0", varasto.toString());
+    }
+
 
 }
