@@ -4,6 +4,6 @@
 .pytest_cache
 htmlcov
 coverage.xml
-build/
-.gradle/
+/build/
+/.gradle/
 *.tmp
